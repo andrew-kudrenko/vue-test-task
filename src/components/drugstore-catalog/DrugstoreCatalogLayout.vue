@@ -7,7 +7,10 @@
       v-bind:style="headerStyles"
       class="drugstore-catalog__header"
     >
-      <drugstore-catalog-header></drugstore-catalog-header>
+      <drugstore-catalog-header
+        :data="data"
+        :onSetFiltered="onSetFiltered"
+      ></drugstore-catalog-header>
     </header>
     <main class="drugstore-catalog__main">
       <div
@@ -15,7 +18,7 @@
         class="drugstore-catalog__list"
       >
         <drugstore-list
-          :data="data"
+          :data="filtered"
           :onGoToMarker="onGoToMarker"
         ></drugstore-list>
       </div>
@@ -68,6 +71,14 @@ export default defineComponent({
   props: {
     data: {
       type: Array as PropType<Array<DrugstoreData>>,
+      required: true,
+    },
+    filtered: {
+      type: Array as PropType<Array<DrugstoreData>>,
+      required: true,
+    },
+    onSetFiltered: {
+      type: Function as PropType<(value: Array<DrugstoreData>) => void>,
       required: true,
     },
     width: {
@@ -155,11 +166,9 @@ export default defineComponent({
     &::-webkit-scrollbar {
       width: $border-radius;
       background-color: map-get($colors, 'success');
-
     }
 
-    &::-webkit-scrollbar-thumb,
-    &::-webkit-scrollbar-track { border-radius: $border-radius; }
+    &::-webkit-scrollbar-thumb { border-radius: $border-radius; }
 
     &::-webkit-scrollbar-thumb {
       background-color: map-get($colors, 'success');

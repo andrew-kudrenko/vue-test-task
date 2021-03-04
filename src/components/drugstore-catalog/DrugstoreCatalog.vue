@@ -1,8 +1,10 @@
 <template>
   <drugstore-catalog-layout
     v-bind="this.$props"
+    :filtered="filtered"
     :onGoToMarker="goToMarker"
     :onSetMap="setMap"
+    :onSetFiltered="onSetFiltered"
   ></drugstore-catalog-layout>
 </template>
 
@@ -23,6 +25,14 @@ export default defineComponent({
   props: {
     data: {
       type: Array as PropType<Array<DrugstoreData>>,
+      required: true,
+    },
+    filtered: {
+      type: Array as PropType<Array<DrugstoreData>>,
+      required: true,
+    },
+    onSetFiltered: {
+      type: Function as PropType<(value: Array<DrugstoreData>) => void>,
       required: true,
     },
     width: {

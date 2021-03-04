@@ -63,6 +63,7 @@ export default defineComponent({
         weight: 300;
       }
       text-decoration: underline;
+      text-decoration-style: dotted;
       color: map-get($colors, 'success');
     }
   }

@@ -12,3 +12,12 @@ export type GoogleMapProps = { data: Array<DrugstoreData> };
 export type DrugstoreCatalogState = {
   map: Nullable<google.maps.Map>;
 };
+
+export type DrugstoreState = {
+  data: Array<DrugstoreData>;
+  filtered: Array<DrugstoreData>;
+};
+
+export type DrugstoreCatalogHeaderState = {
+  query: string;
+};
