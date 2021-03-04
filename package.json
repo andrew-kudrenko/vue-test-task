@@ -9,7 +9,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@googlemaps/markerclustererplus": "^1.0.3",
     "core-js": "^3.6.5",
+    "dotenv": "^8.2.0",
+    "google-maps": "^4.3.3",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
@@ -29,10 +32,13 @@
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^2.0.0-0",
+    "dotenv-webpack": "^6.0.2",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^7.0.0-0",
     "lint-staged": "^9.5.0",
+    "sass": "^1.32.8",
+    "sass-loader": "^10.1.1",
     "typescript": "~3.9.3",
     "vue-jest": "^5.0.0-0"
   },

@@ -20,6 +20,11 @@ export interface Location {
   longitude: number;
 }
 
+export interface Marker {
+  position: Location;
+  title?: string;
+}
+
 export interface DrugstoreData {
   drugstoreId: string;
   geo: GeoPosition;
