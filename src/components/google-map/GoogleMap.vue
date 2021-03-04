@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, reactive } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { Loader as MapsLoader } from 'google-maps';
 import MarkerClusterer from '@googlemaps/markerclustererplus';
 import { GoogleMapState } from '@/types/components.types';
@@ -60,14 +60,16 @@ export default defineComponent({
       type: Array as PropType<Array<Marker>>,
       required: true,
     },
+    onSetMap: {
+      type: Function as PropType<(map: google.maps.Map) => void>,
+      required: true,
+    },
   },
-  data() {
-    const state = reactive<GoogleMapState>({
+  data(): GoogleMapState {
+    return {
       loading: false,
       error: null,
-    });
-
-    return state;
+    };
   },
   computed: {
     fullSizeStyles(): Partial<CSSStyleDeclaration> {
@@ -89,6 +91,8 @@ export default defineComponent({
         center: { ...this.$props },
         zoom: this.$props.zoom,
       });
+
+      this.onSetMap(map);
 
       const markers = this.$props.markers.map((m) => new google.maps.Marker({
         position: { lat: m.position.latitude, lng: m.position.longitude },

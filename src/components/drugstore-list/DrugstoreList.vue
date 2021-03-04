@@ -10,7 +10,7 @@
         <span class="drugstore-list-item__phone">{{ item.phone }}</span>
       </div>
       <small
-        @click="(e) => onClick(e, item)"
+        @click="onGoToMarker(item.geo.location)"
         class="drugstore-list-item__show-button"
       >
         На карте
@@ -30,8 +30,8 @@ export default defineComponent({
       type: Array as PropType<Array<DrugstoreData>>,
       required: true,
     },
-    onClick: {
-      type: Function as PropType<(e: Event, item: DrugstoreData) => void>,
+    onGoToMarker: {
+      type: Function as PropType<(e: Event, marker: Location) => void>,
       required: true,
     },
   },
@@ -59,9 +59,10 @@ export default defineComponent({
 
     &__show-button {
       font: {
-        size: .65rem;
+        size: .75rem;
         weight: 300;
       }
+      text-decoration: underline;
       color: map-get($colors, 'success');
     }
   }

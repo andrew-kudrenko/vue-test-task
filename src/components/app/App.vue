@@ -3,6 +3,8 @@
     :data="drugstoresData"
     :width="'800px'"
     :height="'600px'"
+    :lat="50.61074"
+    :lng="36.58015"
   ></drugstore-catalog>
 </template>
 
